@@ -34,7 +34,7 @@
               v-model="isNewBusiness"
             />
             <label class="custom-control-label" for="inputNewBusiness"
-              >New Business</label
+              >Is it a new Business?</label
             >
           </div>
           <div class="custom-control custom-checkbox my-1 mr-sm-2">
@@ -45,7 +45,7 @@
               v-model="isNewTech"
             />
             <label class="custom-control-label" for="inputNewTech"
-              >New Tech</label
+              >New technology needed for this project?</label
             >
           </div>
           <br />
@@ -57,7 +57,7 @@
               </textarea>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-2">
             <div class="col-4 p-1">Cost</div>
             <div class="col-4 p-1">Scope</div>
             <div class="col-4 p-1">Time</div>
@@ -95,17 +95,36 @@
             </div>
           </div>
 
+          <p>
+            Scope: <i>Refers to complexity</i> <br />
+            Cost: <i>Resources needed to complete</i> <br />
+            Time: <i>To produce deliverable results</i><br />
+            Where (1) <b>High</b> and (9) <b>Low</b>
+          </p>
+
           <div class="row">
             <input
               type="button"
-              class="btn btn-default btn-sm btn-block"
+              class="btn btn-default btn-sm"
               value="Add Requirement"
               @click="addRequirement()"
             />
           </div>
+
+          <div class="row mt-2 mb-2 req_item" v-for="item in this.requirements">
+            <p :key="item.code" class="m-2">
+              <i
+                class="fa fa-times mr-1 text-danger"
+                @click="removeRequirement(item.code)"
+                aria-hidden="true"
+              ></i>
+              {{ item.description }}
+            </p>
+          </div>
+
           <input
             type="button"
-            value="Calculate it"
+            value="Estimate it"
             class="btn btn-primary btn-sm btn-block mt-3"
             @click="runCalculation()"
           />
@@ -134,7 +153,14 @@
 
         <p class="mt-5 h6">Approximate time to complete</p>
         <p class="h5">
-          <b>{{ timeToComplete }}</b>
+          <b>{{ timeToComplete }} Weeks</b>
+        </p>
+
+        <p class="mt-5">
+          <button @click="exportPdf()" class="btn btn-default btn-sm">
+            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i> EXPORT PDF
+            REPORT
+          </button>
         </p>
       </div>
     </div>
@@ -177,7 +203,6 @@ export default {
     },
 
     runCalculation() {
-        
       this.score = 0;
       this.TeamOfDevs = 4
       this.numberOfQa = 1
@@ -363,25 +388,33 @@ export default {
       this.replayBouncing();
     },
 
-    doIt() {
-      alert(1);
+    removeRequirement(code) {
+      this.requirements = this.requirements.filter((r) => r.code !== code);
     },
+
     addRequirement() {
-      let data = {
-        projectName: this.projectName,
-        businessStatement : this.businessStatement,
-        isNewBusiness: this.isNewBusiness,
-        isNewTech: this.isNewTech,
+      let reqNumbers = {
+        cost: $("#inputCost").val(),
+        scope: $("#inputScope").val(),
+        time: $("#inputTime").val(),
       };
-
-     this.requirements.push({
+      this.requirements.push({
         code: new Date().getTime(),
-        description: $('#inputDescription').val(),
-        cost: $('#inputCost').val(),
-        scope: $('#inputScope').val(),
-        time: $('#inputTime').val(),
-     })
+        description: `${$("#inputDescription").val()} - Cost(${
+          reqNumbers.cost
+        }) Scope(${reqNumbers.scope}) Time(${reqNumbers.time})`,
+        ...reqNumbers,
+      });
 
+      // Clear form for next
+      $("#inputDescription").val("");
+      $("#inputCost").val("");
+      $("#inputScope").val("");
+      $("#inputTime").val("");
+    },
+
+    exportPdf() {
+      console.log("PDF");
     },
   },
 };
@@ -406,5 +439,9 @@ export default {
   100% {
     bottom: 0;
   }
+}
+
+.req_item {
+  word-break: break-all !important;
 }
 </style>
