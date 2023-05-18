@@ -76,13 +76,24 @@ export default {
 
   methods: {
     runCalculation() {
-      // TODO:
-      // This is our magic
+      score = 0
 
       this.projectSize = 200;
       this.numberOfDevelopers = 200;
       this.numberOfQa = 200;
       this.timeToComplete = 200;
+
+      score = this.projectSize + this.numberOfDevelopers + this.numberOfQa + this.timeToComplete
+
+      if(this.isNewBusiness)
+      {
+        score = score*2
+      }
+
+      if(this.isNewTech)
+      {
+        score = score + (score/2)
+      }
     },
   },
 };
