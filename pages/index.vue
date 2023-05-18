@@ -96,9 +96,9 @@
           </div>
 
           <p>
-            Scope: <i>Refers to complexity</i> <br/>
-            Cost: <i>Resources needed to complete</i> <br/>
-            Time: <i>To produce deliverable results</i><br>
+            Scope: <i>Refers to complexity</i> <br />
+            Cost: <i>Resources needed to complete</i> <br />
+            Time: <i>To produce deliverable results</i><br />
             Where (1) <b>High</b> and (9) <b>Low</b>
           </p>
 
@@ -236,11 +236,13 @@ export default {
         cost: $("#inputCost").val(),
         scope: $("#inputScope").val(),
         time: $("#inputTime").val(),
-      }
+      };
       this.requirements.push({
         code: new Date().getTime(),
-        description: `${$("#inputDescription").val()} - Cost(${reqNumbers.cost}) Scope(${reqNumbers.scope}) Time(${reqNumbers.time})`,
-        ...reqNumbers
+        description: `${$("#inputDescription").val()} - Cost(${
+          reqNumbers.cost
+        }) Scope(${reqNumbers.scope}) Time(${reqNumbers.time})`,
+        ...reqNumbers,
       });
 
       // Clear form for next
