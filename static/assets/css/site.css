@@ -1,0 +1,74 @@
+/************************** GERAL **************************/
+html {
+    background-color: #f4f3ef !important;
+  }
+  .no-data {
+    background-image: url("/assets/img/no-data.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 13pt;
+  }
+  .no-data:before {
+    content: "Nenhum registro encontrado!";
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  .blurry-text {
+    text-shadow: 0 0 14px black;
+    color: transparent;
+ }
+  /************************** EFEITOS **************************/
+  .effect-grow:hover{
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  .effect-shrink:hover
+  {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  /************************** MENU LATERAL **************************/
+  .sidebar-wrapper {
+    overflow: hidden !important;
+  }
+  .sidebar-wrapper .ps-scrollbar-x-rail {
+    visibility: hidden !important;
+  }
+  .sidebar-wrapper .ps-scrollbar-y-rail {
+    visibility: hidden !important;
+  }
+  .nav p {
+    font-weight: unset !important;
+  }
+  
+  .big-check {
+    height: 22px;
+    width: 22px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  /************************** DATATABLES **************************/
+  .dataTables_filter {
+    float: left !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+  .dataTables_filter label {
+    width: 100% !important;
+  }
+  .dataTables_filter input {
+    width: 100% !important;
+    font-size: 14pt !important;
+  }
+  
+  /************************** LUPA PESQUISA TABELA **************************/
+  .input-group-append .input-group-text {
+    cursor: pointer;
+  }

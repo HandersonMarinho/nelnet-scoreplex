@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "scoreplex",
+    "env": {
+
+    },
+    "alias": [
+        "scoreplex"
+    ]
+}
