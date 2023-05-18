@@ -1,13 +1,12 @@
 <template>
   <div class="content">
-    {{ projectName }}
-    {{ businessStatement }}
-    {{ isNewBusiness }}
-    {{ isNewTech }}
-    <div class="row">
+    <div class="row pt-4">
       <div class="col-6">
+        <h5>
+          <i class="fa fa-briefcase mr-2" aria-hidden="true"></i>
+          Business Information
+        </h5>
         <form class="col-8 offset-2">
-          <h3>Enter a new requeriment</h3>
           <div class="form-group">
             <label for="inputProjectName">Project Name</label>
             <input
@@ -52,14 +51,19 @@
           <br />
           <h6>Requirements</h6>
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <label for="inputDescription">Description</label>
               <textarea class="form-control" id="inputDescription" rows="5">
               </textarea>
             </div>
-            <div class="col-6">
-              <br />
-              <label class="sr-only" for="inputCost">Cost</label>
+          </div>
+          <div class="row">
+            <div class="col-4 p-1">Cost</div>
+            <div class="col-4 p-1">Scope</div>
+            <div class="col-4 p-1">Time</div>
+          </div>
+          <div class="row">
+            <div class="col-4 p-1">
               <input
                 type="number"
                 min="1"
@@ -68,7 +72,8 @@
                 id="inputCost"
                 placeholder="Cost"
               />
-              <label class="sr-only" for="inputCost">Scope</label>
+            </div>
+            <div class="col-4 p-1">
               <input
                 type="number"
                 min="1"
@@ -77,7 +82,8 @@
                 id="inputScope"
                 placeholder="Scope"
               />
-              <label class="sr-only" for="inputCost">Time</label>
+            </div>
+            <div class="col-4 p-1">
               <input
                 type="number"
                 min="1"
@@ -88,21 +94,48 @@
               />
             </div>
           </div>
+
           <div class="row">
             <input
               type="button"
-              class="btn btn-primary btn-lg btn-block"
+              class="btn btn-default btn-sm btn-block"
               value="Add Requirement"
               @click="addRequirement()"
             />
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">
-            Calculate it
-          </button>
+          <input
+            type="button"
+            value="Calculate it"
+            class="btn btn-primary btn-sm btn-block mt-3"
+            @click="runCalculation()"
+          />
         </form>
       </div>
-      <div class="col-6">
-        seconde column
+      <div class="col-6 text-center shadow bounce">
+        <h5>
+          <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+          Project Estimation
+        </h5>
+        <p class="">Given the data entered, we recommended</p>
+        <p class="mt-5 h6">Size of Project</p>
+        <p class="h5">
+          <b>{{ projectSize }}</b>
+        </p>
+
+        <p class="mt-5 h6"># of Developer</p>
+        <p class="h5">
+          <b>{{ numberOfDevelopers }}</b>
+        </p>
+
+        <p class="mt-5 h6"># of Quality Analysts</p>
+        <p class="h5">
+          <b>{{ numberOfQa }}</b>
+        </p>
+
+        <p class="mt-5 h6">Approximate time to complete</p>
+        <p class="h5">
+          <b>{{ timeToComplete }}</b>
+        </p>
       </div>
     </div>
   </div>
@@ -129,28 +162,90 @@ export default {
       businessStatement: "",
       isNewBusiness: false,
       isNewTech: false,
-      requirements: [
-        {
-          code: 0,
-          description: "",
-          cost: 0,
-          scope: 0,
-          time: 0,
-        },
-      ],
+      requirements: [],
     };
   },
 
   mounted() {},
 
   methods: {
+    replayBouncing() {
+      $(".bounce").css({ display: "none" });
+      setTimeout(() => {
+        $(".bounce").css({ display: "block" });
+      }, 100);
+    },
+
+    runCalculation() {
+
+      this.score = 0;
+
+      this.projectSize = 200;
+      this.numberOfDevelopers = 200;
+      this.numberOfQa = 200;
+      this.timeToComplete = 200;
+
+      this.score =
+        this.projectSize +
+        this.numberOfDevelopers +
+        this.numberOfQa +
+        this.timeToComplete;
+
+      if (this.isNewBusiness) {
+        this.score = this.score * 2;
+      }
+
+      if (this.isNewTech) {
+        this.score = this.score + this.score * 0.5;
+      }
+
+      this.score = this.score + this.score * 0.5;
+      this.replayBouncing();
+    },
+
     doIt() {
       alert(1);
     },
     addRequirement() {
-      console.log("Hello world");
+      let data = {
+        projectName: this.projectName,
+        businessStatement : this.businessStatement,
+        isNewBusiness: this.isNewBusiness,
+        isNewTech: this.isNewTech,
+      };
+
+     this.requirements.push({
+        code: new Date().getTime(),
+        description: $('#inputDescription').val(),
+        cost: $('#inputCost').val(),
+        scope: $('#inputScope').val(),
+        time: $('#inputTime').val(),
+     })
+
+      console.log(this.requirements);
     },
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.bounce {
+  bottom: 0;
+  -webkit-animation: bounce 0.5s;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    bottom: 5px;
+  }
+  25%,
+  75% {
+    bottom: 15px;
+  }
+  50% {
+    bottom: 20px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+</style>
