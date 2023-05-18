@@ -157,13 +157,11 @@
         </p>
 
         <p class="mt-5">
-          <button
-          @click="exportPdf()"
-          class="btn btn-default btn-sm">
-            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i> EXPORT PDF REPORT
+          <button @click="exportPdf()" class="btn btn-default btn-sm">
+            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i> EXPORT PDF
+            REPORT
           </button>
         </p>
-
       </div>
     </div>
   </div>
@@ -207,40 +205,36 @@ export default {
     runCalculation() {
       this.score = 0;
 
-      this.projectSize = 200;
-      this.numberOfDevelopers = 200;
-      this.numberOfQa = 200;
-      this.timeToComplete = 200;
+      let reqs = this.requirements.length;
 
-      this.score =
-        this.projectSize +
-        this.numberOfDevelopers +
-        this.numberOfQa +
-        this.timeToComplete;
+      this.projectSize = reqs * 200;
+      this.numberOfDevelopers = reqs > 5 ? 4 : 2;
+      this.numberOfQa = reqs > 5 ? 2 : 1
+      this.timeToComplete = 6 * reqs;
 
-      if (this.isNewBusiness) {
-        this.score = this.score * 2;
-      }
+      // this.score =
+      //   this.projectSize +
+      //   this.numberOfDevelopers +
+      //   this.numberOfQa +
+      //   this.timeToComplete;
 
-      if (this.isNewTech) {
-        this.score = this.score + this.score * 0.5;
-      }
+      // if (this.isNewBusiness) {
+      //   this.score = this.score * 2;
+      // }
 
-      this.score = this.score + this.score * 0.5;
+      // if (this.isNewTech) {
+      //   this.score = this.score + this.score * 0.5;
+      // }
+
+      // this.score = this.score + this.score * 0.5;
       this.replayBouncing();
     },
 
     removeRequirement(code) {
       this.requirements = this.requirements.filter((r) => r.code !== code);
     },
-    addRequirement() {
-      let data = {
-        projectName: this.projectName,
-        businessStatement: this.businessStatement,
-        isNewBusiness: this.isNewBusiness,
-        isNewTech: this.isNewTech,
-      };
 
+    addRequirement() {
       let reqNumbers = {
         cost: $("#inputCost").val(),
         scope: $("#inputScope").val(),
@@ -261,9 +255,9 @@ export default {
       $("#inputTime").val("");
     },
 
-    exportPdf(){
-      console.log('PDF')
-    }
+    exportPdf() {
+      console.log("PDF");
+    },
   },
 };
 </script>
