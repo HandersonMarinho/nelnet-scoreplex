@@ -34,7 +34,7 @@
               v-model="isNewBusiness"
             />
             <label class="custom-control-label" for="inputNewBusiness"
-              >New Business</label
+              >Is it a new Business?</label
             >
           </div>
           <div class="custom-control custom-checkbox my-1 mr-sm-2">
@@ -45,7 +45,7 @@
               v-model="isNewTech"
             />
             <label class="custom-control-label" for="inputNewTech"
-              >New Tech</label
+              >New technology needed for this project?</label
             >
           </div>
           <br />
