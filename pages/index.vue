@@ -103,6 +103,18 @@
               @click="addRequirement()"
             />
           </div>
+
+          <div class="row mt-2 mb-2" v-for="item in this.requirements">
+            <p :key="item.code">
+              <i
+                class="fa fa-times mr-1 text-danger"
+                @click="removeRequirement(item.code)"
+                aria-hidden="true"
+              ></i>
+              {{ item.description }}
+            </p>
+          </div>
+
           <input
             type="button"
             value="Calculate it"
@@ -177,7 +189,6 @@ export default {
     },
 
     runCalculation() {
-
       this.score = 0;
 
       this.projectSize = 200;
@@ -203,26 +214,33 @@ export default {
       this.replayBouncing();
     },
 
-    doIt() {
-      alert(1);
+    removeRequirement(code) {
+      this.requirements = this.requirements.filter((r) => r.code !== code);
     },
     addRequirement() {
       let data = {
         projectName: this.projectName,
-        businessStatement : this.businessStatement,
+        businessStatement: this.businessStatement,
         isNewBusiness: this.isNewBusiness,
         isNewTech: this.isNewTech,
       };
 
-     this.requirements.push({
+      let reqNumbers = {
+        cost: $("#inputCost").val(),
+        scope: $("#inputScope").val(),
+        time: $("#inputTime").val(),
+      }
+      this.requirements.push({
         code: new Date().getTime(),
-        description: $('#inputDescription').val(),
-        cost: $('#inputCost').val(),
-        scope: $('#inputScope').val(),
-        time: $('#inputTime').val(),
-     })
+        description: `${$("#inputDescription").val()} - Cost(${reqNumbers.cost}) Scope(${reqNumbers.scope}) Time(${reqNumbers.time})`,
+        ...reqNumbers
+      });
 
-      console.log(this.requirements);
+      // Clear form for next
+      $("#inputDescription").val("");
+      $("#inputCost").val("");
+      $("#inputScope").val("");
+      $("#inputTime").val("");
     },
   },
 };
