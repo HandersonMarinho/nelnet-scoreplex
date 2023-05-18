@@ -57,7 +57,7 @@
               </textarea>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-2">
             <div class="col-4 p-1">Cost</div>
             <div class="col-4 p-1">Scope</div>
             <div class="col-4 p-1">Time</div>
@@ -95,17 +95,24 @@
             </div>
           </div>
 
+          <p>
+            Scope: <i>Refers to complexity</i> <br/>
+            Cost: <i>Resources needed to complete</i> <br/>
+            Time: <i>To produce deliverable results</i><br>
+            Where (1) <b>High</b> and (9) <b>Low</b>
+          </p>
+
           <div class="row">
             <input
               type="button"
-              class="btn btn-default btn-sm btn-block"
+              class="btn btn-default btn-sm"
               value="Add Requirement"
               @click="addRequirement()"
             />
           </div>
 
-          <div class="row mt-2 mb-2" v-for="item in this.requirements">
-            <p :key="item.code">
+          <div class="row mt-2 mb-2 req_item" v-for="item in this.requirements">
+            <p :key="item.code" class="m-2">
               <i
                 class="fa fa-times mr-1 text-danger"
                 @click="removeRequirement(item.code)"
@@ -117,7 +124,7 @@
 
           <input
             type="button"
-            value="Calculate it"
+            value="Estimate it"
             class="btn btn-primary btn-sm btn-block mt-3"
             @click="runCalculation()"
           />
@@ -265,5 +272,9 @@ export default {
   100% {
     bottom: 0;
   }
+}
+
+.req_item {
+  word-break: break-all !important;
 }
 </style>
