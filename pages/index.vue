@@ -155,6 +155,15 @@
         <p class="h5">
           <b>{{ timeToComplete }}</b>
         </p>
+
+        <p class="mt-5">
+          <button
+          @click="exportPdf()"
+          class="btn btn-default btn-sm">
+            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i> EXPORT PDF REPORT
+          </button>
+        </p>
+
       </div>
     </div>
   </div>
@@ -251,6 +260,10 @@ export default {
       $("#inputScope").val("");
       $("#inputTime").val("");
     },
+
+    exportPdf(){
+      console.log('PDF')
+    }
   },
 };
 </script>
