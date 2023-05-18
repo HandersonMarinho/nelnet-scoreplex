@@ -1,5 +1,9 @@
 <template>
   <div class="content">
+    {{ projectName }}
+    {{ businessStatement }}
+    {{ isNewBusiness }}
+    {{ isNewTech }}
     <div class="row">
       <div class="col-6">
         <form class="col-8 offset-2">
@@ -10,12 +14,17 @@
               type="text"
               class="form-control"
               id="inputProjectName"
-              aria-describedby="projectNameHelp"
+              v-model="projectName"
             />
           </div>
           <div class="form-group">
             <label for="inputBusinessStatement">Business Statement</label>
-            <textarea class="form-control" id="inputBusinessStatement" rows="3">
+            <textarea
+              class="form-control"
+              id="inputBusinessStatement"
+              rows="3"
+              v-model="businessStatement"
+            >
             </textarea>
           </div>
           <div class="custom-control custom-checkbox my-1 mr-sm-2">
@@ -23,6 +32,7 @@
               type="checkbox"
               class="custom-control-input"
               id="inputNewBusiness"
+              v-model="isNewBusiness"
             />
             <label class="custom-control-label" for="inputNewBusiness"
               >New Business</label
@@ -33,6 +43,7 @@
               type="checkbox"
               class="custom-control-input"
               id="inputNewTech"
+              v-model="isNewTech"
             />
             <label class="custom-control-label" for="inputNewTech"
               >New Tech</label
@@ -42,8 +53,8 @@
           <h6>Requirements</h6>
           <div class="row">
             <div class="col-6">
-              <label for="inputRequirements">Description</label>
-              <textarea class="form-control" id="inputRequirements" rows="5">
+              <label for="inputDescription">Description</label>
+              <textarea class="form-control" id="inputDescription" rows="5">
               </textarea>
             </div>
             <div class="col-6">
@@ -82,6 +93,7 @@
               type="button"
               class="btn btn-primary btn-lg btn-block"
               value="Add Requirement"
+              @click="addRequirement()"
             />
           </div>
           <button type="submit" class="btn btn-primary btn-lg btn-block">
@@ -108,7 +120,24 @@ export default {
 
   data() {
     return {
-      something: "something",
+      projectSize: 0,
+      numberOfDevelopers: 0,
+      numberOfQa: 0,
+      timeToComplete: 0,
+
+      projectName: "",
+      businessStatement: "",
+      isNewBusiness: false,
+      isNewTech: false,
+      requirements: [
+        {
+          code: 0,
+          description: "",
+          cost: 0,
+          scope: 0,
+          time: 0,
+        },
+      ],
     };
   },
 
@@ -117,6 +146,9 @@ export default {
   methods: {
     doIt() {
       alert(1);
+    },
+    addRequirement() {
+      console.log("Hello world");
     },
   },
 };
