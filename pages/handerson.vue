@@ -19,6 +19,8 @@
         <p class="mt-5 h6">Approximate time to complete</p>
         <p class="h5"><b>{{ timeToComplete }}</b></p>
 
+        <button v-click="dosomething()" >CLick me</button>
+
       </div>
     </div>
   </div>
@@ -62,6 +64,9 @@ export default {
   },
 
   methods: {
+    dosomething(){
+      console.log(1)
+    },
     runCalculation() {
       score = 0
 

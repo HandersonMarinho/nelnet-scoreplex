@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/browser'
 import { Dedupe, ExtraErrorData, ReportingObserver, RewriteFrames, Vue } from '@sentry/integrations'
 
 export default function (ctx, inject) {
-  const opts = Object.assign({}, {"dsn":"https:\u002F\u002F3ea19735d28f4effa41ea14c5eced845@sentry.io\u002F1817236","environment":"production"}, {
+  const opts = Object.assign({}, {"dsn":"https:\u002F\u002F3ea19735d28f4effa41ea14c5eced845@sentry.io\u002F1817236","environment":"development"}, {
     integrations: [
       new Dedupe({}),
       new ExtraErrorData({}),
