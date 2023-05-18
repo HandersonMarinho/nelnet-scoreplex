@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-6">
         <form class="col-8 offset-2">
-          <h3>Enter a new requeriment:</h3>
+          <h3>Enter a new requeriment</h3>
           <div class="form-group">
             <label for="inputProjectName">Project Name</label>
             <input
@@ -18,17 +18,75 @@
             <textarea class="form-control" id="inputBusinessStatement" rows="3">
             </textarea>
           </div>
-          <div class="form-group form-check">
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
             <input
               type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
+              class="custom-control-input"
+              id="inputNewBusiness"
             />
-            <label class="form-check-label" for="exampleCheck1"
-              >Check me out</label
+            <label class="custom-control-label" for="inputNewBusiness"
+              >New Business</label
             >
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="inputNewTech"
+            />
+            <label class="custom-control-label" for="inputNewTech"
+              >New Tech</label
+            >
+          </div>
+          <br />
+          <h6>Requirements</h6>
+          <div class="row">
+            <div class="col-6">
+              <label for="inputRequirements">Description</label>
+              <textarea class="form-control" id="inputRequirements" rows="5">
+              </textarea>
+            </div>
+            <div class="col-6">
+              <br />
+              <label class="sr-only" for="inputCost">Cost</label>
+              <input
+                type="number"
+                min="1"
+                max="9"
+                class="form-control mb-2 mr-sm-2"
+                id="inputCost"
+                placeholder="Cost"
+              />
+              <label class="sr-only" for="inputCost">Scope</label>
+              <input
+                type="number"
+                min="1"
+                max="9"
+                class="form-control mb-2 mr-sm-2"
+                id="inputScope"
+                placeholder="Scope"
+              />
+              <label class="sr-only" for="inputCost">Time</label>
+              <input
+                type="number"
+                min="1"
+                max="9"
+                class="form-control mb-2 mr-sm-2"
+                id="inputTime"
+                placeholder="Time"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <input
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+              value="Add Requirement"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Calculate it
+          </button>
         </form>
       </div>
       <div class="col-6">
