@@ -153,7 +153,7 @@
 
         <p class="mt-5 h6">Approximate time to complete</p>
         <p class="h5">
-          <b>{{ timeToComplete }}</b>
+          <b>{{ timeToComplete }} Weeks</b>
         </p>
 
         <p class="mt-5">
