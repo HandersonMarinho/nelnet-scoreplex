@@ -92,8 +92,10 @@ export default {
 
       if(this.isNewTech)
       {
-        score = score + (score/2)
+        score = score + (score*.5)
       }
+
+      score = score + (score*.5)
     },
   },
 };
