@@ -177,29 +177,189 @@ export default {
     },
 
     runCalculation() {
-
+        
       this.score = 0;
+      this.TeamOfDevs = 4
+      this.numberOfQa = 1
 
-      this.projectSize = 200;
-      this.numberOfDevelopers = 200;
-      this.numberOfQa = 200;
-      this.timeToComplete = 200;
+      console.log(document.getElementById('inputCost').value)
+      //this.cost = 200;
+      //this.scope = 200;
+      //this.time = 200;
+
+      this.cost = parseInt(document.getElementById('inputCost').value);
+      console.log(this.cost)
+      this.time = parseInt(document.getElementById('inputTime').value);
+      this.scope = parseInt(document.getElementById('inputScope').value);
+
 
       this.score =
-        this.projectSize +
-        this.numberOfDevelopers +
-        this.numberOfQa +
-        this.timeToComplete;
+        this.cost +
+        this.scope +
+        this.time 
 
       if (this.isNewBusiness) {
         this.score = this.score * 2;
+        this.TeamOfDevs + 1
       }
 
       if (this.isNewTech) {
         this.score = this.score + this.score * 0.5;
+        this.TeamOfDevs + 1
       }
 
       this.score = this.score + this.score * 0.5;
+
+      //score is size of project
+      this.projectSize = this.score
+      //this.numberOfDevelopers = this.score/300
+      console.info(this.numberOfDevelopers)
+      console.info(this.numberOfQa)
+      //this.numberOfQa = this.score/500
+      //this.timeToComplete = this.score/2
+      if(this.cost === 1)
+      {
+        this.numberOfDevelopers = this.TeamOfDevs * 5 
+      }
+      if(this.cost === 2 || this.cost === 3)
+      {
+        this.numberOfDevelopers = this.TeamOfDevs * 4
+      }
+      if(this.cost === 4 || this.cost === 5)
+      {
+        this.numberOfDevelopers = this.TeamOfDevs * 3
+      }
+      if(this.cost === 6 || this.cost === 7)
+      {
+        this.numberOfDevelopers = this.TeamOfDevs * 2 
+      }
+      if(this.cost === 8 || this.cost === 9)
+      {
+        this.numberOfDevelopers = this.TeamOfDevs * 1 
+      }
+      this.numberOfQa = this.numberOfDevelopers / 4
+
+      if(this.time === 1 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 2 )
+      {
+        this.timeToComplete = 2
+        if(this.sNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.sNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 3 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 4 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.sNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 5 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 6 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 7 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 8 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+      if(this.time === 9 )
+      {
+        this.timeToComplete = 2
+        if(this.isNewBusiness)
+        {
+          this.timeToComplete += 3
+        }
+        if(this.isNewTech)
+        {
+          this.timeToComplete += 3
+        }
+      }
+
+      //1QA for 4 devs 
+      //2QA for 8 devs
+      //cost of 1 means 5 dev teams
+      //3 - 4 4 teams
+      //5 -6 3 teams 
+      //7-8 2 teams
+      //9 1 teams
+      //Scope is complexity
+      //100 = most difficult 100 = 1, 90 = 2 
+      //Time = minumum time is 2 weeks (sprint) (1) a 2 is 3 weeks
+      //New tech or new business = + 3 weeks
+
       this.replayBouncing();
     },
 
@@ -222,7 +382,6 @@ export default {
         time: $('#inputTime').val(),
      })
 
-      console.log(this.requirements);
     },
   },
 };
