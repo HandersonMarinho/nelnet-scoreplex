@@ -1,37 +1,24 @@
 <template>
   <div class="content">
-    <div class="row">
-      <div class="col-6">
-        FORM HERE
+    <div class="row pt-4">
+      <div class="col-6 text-center">
+        <h5>Business Information</h5>
       </div>
-      <div class="col-6">
+      <div class="col-6 text-center">
         <h5>Project Estimation</h5>
-        <table>
-          <tr>
-            <td>
-              <span>{{ projectSize }}</span>
-            </td>
-            <td>Size of Project</td>
-          </tr>
-          <tr>
-            <td>
-              <span>{{ numberOfDevelopers }}</span>
-            </td>
-            <td># of Developer</td>
-          </tr>
-          <tr>
-            <td>
-              <span>{{ numberOfQa }}</span>
-            </td>
-            <td># of Quality Analysts</td>
-          </tr>
-          <tr>
-            <td>
-              <span>{{ timeToComplete }}</span>
-            </td>
-            <td>Approximate time to complete</td>
-          </tr>
-        </table>
+        <p class="">Given the data entered, we recommended</p>
+        <p class="mt-5 h6">Size of Project</p>
+        <p class="h5"><b>{{ projectSize }}</b></p>
+
+        <p class="mt-5 h6"># of Developer</p>
+        <p class="h5"><b>{{ numberOfDevelopers }}</b></p>
+
+        <p class="mt-5 h6"># of Quality Analysts</p>
+        <p class="h5"><b>{{ numberOfQa }}</b></p>
+
+        <p class="mt-5 h6">Approximate time to complete</p>
+        <p class="h5"><b>{{ timeToComplete }}</b></p>
+
       </div>
     </div>
   </div>
@@ -87,4 +74,5 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+</style>

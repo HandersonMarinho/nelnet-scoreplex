@@ -12,13 +12,13 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_moment_665a0dba from 'nuxt_plugin_moment_665a0dba' // Source: ./moment.js (mode: 'all')
-import nuxt_plugin_axios_465009d6 from 'nuxt_plugin_axios_465009d6' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_sentryserver_4abbd5d9 from 'nuxt_plugin_sentryserver_4abbd5d9' // Source: ./sentry.server.js (mode: 'server')
-import nuxt_plugin_sentryclient_35fb375e from 'nuxt_plugin_sentryclient_35fb375e' // Source: ./sentry.client.js (mode: 'client')
+import nuxt_plugin_moment_9e49e0a0 from 'nuxt_plugin_moment_9e49e0a0' // Source: ./moment.js (mode: 'all')
+import nuxt_plugin_axios_ed474230 from 'nuxt_plugin_axios_ed474230' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_sentryserver_42d692a8 from 'nuxt_plugin_sentryserver_42d692a8' // Source: ./sentry.server.js (mode: 'server')
+import nuxt_plugin_sentryclient_78db4524 from 'nuxt_plugin_sentryclient_78db4524' // Source: ./sentry.client.js (mode: 'client')
 import nuxt_plugin_corehelper_b92be05e from 'nuxt_plugin_corehelper_b92be05e' // Source: ../plugins/core-helper.js (mode: 'all')
 import nuxt_plugin_mask_18e26f55 from 'nuxt_plugin_mask_18e26f55' // Source: ../plugins/mask.js (mode: 'all')
-import nuxt_plugin_plugin_6ed9a491 from 'nuxt_plugin_plugin_6ed9a491' // Source: ./auth/plugin.js (mode: 'all')
+import nuxt_plugin_plugin_4b0a9e24 from 'nuxt_plugin_plugin_4b0a9e24' // Source: ./auth/plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -177,20 +177,20 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_moment_665a0dba === 'function') {
-    await nuxt_plugin_moment_665a0dba(app.context, inject)
+  if (typeof nuxt_plugin_moment_9e49e0a0 === 'function') {
+    await nuxt_plugin_moment_9e49e0a0(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_465009d6 === 'function') {
-    await nuxt_plugin_axios_465009d6(app.context, inject)
+  if (typeof nuxt_plugin_axios_ed474230 === 'function') {
+    await nuxt_plugin_axios_ed474230(app.context, inject)
   }
 
-  if (process.server && typeof nuxt_plugin_sentryserver_4abbd5d9 === 'function') {
-    await nuxt_plugin_sentryserver_4abbd5d9(app.context, inject)
+  if (process.server && typeof nuxt_plugin_sentryserver_42d692a8 === 'function') {
+    await nuxt_plugin_sentryserver_42d692a8(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_sentryclient_35fb375e === 'function') {
-    await nuxt_plugin_sentryclient_35fb375e(app.context, inject)
+  if (process.client && typeof nuxt_plugin_sentryclient_78db4524 === 'function') {
+    await nuxt_plugin_sentryclient_78db4524(app.context, inject)
   }
 
   if (typeof nuxt_plugin_corehelper_b92be05e === 'function') {
@@ -201,8 +201,8 @@ async function createApp (ssrContext) {
     await nuxt_plugin_mask_18e26f55(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_6ed9a491 === 'function') {
-    await nuxt_plugin_plugin_6ed9a491(app.context, inject)
+  if (typeof nuxt_plugin_plugin_4b0a9e24 === 'function') {
+    await nuxt_plugin_plugin_4b0a9e24(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
